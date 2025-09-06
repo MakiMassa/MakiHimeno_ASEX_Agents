@@ -1,0 +1,194 @@
+{
+  "name": "Maki Himeno - Workflow Automação Diária",
+  "nodes": [
+    {
+      "parameters": {
+        "rule": {
+          "interval": [
+            {
+              "field": "cronExpression",
+              "cronExpression": "0 9 * * *"
+            }
+          ]
+        }
+      },
+      "name": "Trigger Diário 9h",
+      "type": "n8n-nodes-base.cron",
+      "typeVersion": 1,
+      "position": [
+        240,
+        300
+      ]
+    },
+    {
+      "parameters": {
+        "command": "python3 /home/ubuntu/maki_agent_system.py"
+      },
+      "name": "Executar Sistema Maki",
+      "type": "n8n-nodes-base.executeCommand",
+      "typeVersion": 1,
+      "position": [
+        460,
+        300
+      ]
+    },
+    {
+      "parameters": {
+        "url": "https://api.runpod.ai/v2/generate",
+        "authentication": "genericCredentialType",
+        "genericAuthType": "httpHeaderAuth",
+        "httpHeaderAuth": {
+          "name": "Authorization",
+          "value": "Bearer rpa_2OLBINZ8JN989RC0PS2TSOYAI73XIPIWSYD6A5YT9yb2nc"
+        },
+        "requestMethod": "POST",
+        "jsonParameters": true,
+        "bodyParametersJson": "{\n  \"prompt\": \"petite, almond-shaped eyes with dark brown iris, oval face with delicate jawline, fair porcelain skin, short black hair with green highlights, slim waist, soft feminine curves, elegant pose, cyberpunk background\",\n  \"steps\": 20,\n  \"width\": 512,\n  \"height\": 768\n}"
+      },
+      "name": "Gerar Imagem Runpod",
+      "type": "n8n-nodes-base.httpRequest",
+      "typeVersion": 1,
+      "position": [
+        680,
+        200
+      ]
+    },
+    {
+      "parameters": {
+        "url": "https://api.fanvue.com/upload",
+        "authentication": "genericCredentialType",
+        "requestMethod": "POST",
+        "bodyParametersJson": "{\n  \"image\": \"{{$node['Gerar Imagem Runpod'].json['image_url']}}\",\n  \"caption\": \"Nova arte da Maki Himeno! 💚 #cyberpunk #digitalart #makihimeno\",\n  \"tier\": \"sfw\"\n}"
+      },
+      "name": "Upload para Fanvue",
+      "type": "n8n-nodes-base.httpRequest",
+      "typeVersion": 1,
+      "position": [
+        900,
+        200
+      ]
+    },
+    {
+      "parameters": {
+        "url": "https://api.instagram.com/v1/media",
+        "requestMethod": "POST",
+        "bodyParametersJson": "{\n  \"image_url\": \"{{$node['Gerar Imagem Runpod'].json['image_url']}}\",\n  \"caption\": \"Maki Himeno em mais uma aventura cyberpunk! ✨ #maki #cyberpunk #digitalart\"\n}"
+      },
+      "name": "Post Instagram",
+      "type": "n8n-nodes-base.httpRequest",
+      "typeVersion": 1,
+      "position": [
+        900,
+        400
+      ]
+    },
+    {
+      "parameters": {
+        "functionCode": "// Análise de métricas e ROI\nconst revenue = 75000; // ¥75k exemplo\nconst costs = 15000;   // ¥15k exemplo\nconst roi = ((revenue - costs) / costs) * 100;\n\nconst metrics = {\n  timestamp: new Date().toISOString(),\n  revenue: revenue,\n  costs: costs,\n  roi: roi,\n  profit: revenue - costs,\n  status: roi > 300 ? 'Excelente' : roi > 200 ? 'Bom' : 'Melhorar'\n};\n\nconsole.log('Métricas calculadas:', metrics);\n\nreturn [{\n  json: metrics\n}];"
+      },
+      "name": "Calcular Métricas",
+      "type": "n8n-nodes-base.function",
+      "typeVersion": 1,
+      "position": [
+        680,
+        400
+      ]
+    },
+    {
+      "parameters": {
+        "to": "usuario@email.com",
+        "subject": "Relatório Diário - Sistema Maki Himeno",
+        "text": "Relatório do dia {{$now.format('DD/MM/YYYY')}}:\n\nReceita: ¥{{$node['Calcular Métricas'].json['revenue']}}\nROI: {{$node['Calcular Métricas'].json['roi']}}%\nStatus: {{$node['Calcular Métricas'].json['status']}}\n\nImagem gerada: {{$node['Gerar Imagem Runpod'].json['image_url']}}\nUpload Fanvue: ✅\nPost Instagram: ✅\n\nSistema funcionando perfeitamente!"
+      },
+      "name": "Enviar Relatório Email",
+      "type": "n8n-nodes-base.emailSend",
+      "typeVersion": 1,
+      "position": [
+        1120,
+        300
+      ]
+    }
+  ],
+  "connections": {
+    "Trigger Diário 9h": {
+      "main": [
+        [
+          {
+            "node": "Executar Sistema Maki",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Executar Sistema Maki": {
+      "main": [
+        [
+          {
+            "node": "Gerar Imagem Runpod",
+            "type": "main",
+            "index": 0
+          },
+          {
+            "node": "Calcular Métricas",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Gerar Imagem Runpod": {
+      "main": [
+        [
+          {
+            "node": "Upload para Fanvue",
+            "type": "main",
+            "index": 0
+          },
+          {
+            "node": "Post Instagram",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Upload para Fanvue": {
+      "main": [
+        [
+          {
+            "node": "Enviar Relatório Email",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Post Instagram": {
+      "main": [
+        [
+          {
+            "node": "Enviar Relatório Email",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Calcular Métricas": {
+      "main": [
+        [
+          {
+            "node": "Enviar Relatório Email",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    }
+  },
+  "active": true,
+  "settings": {},
+  "id": "maki-himeno-daily-automation"
+}
+

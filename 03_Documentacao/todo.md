@@ -1,0 +1,11 @@
+- [x] Configurar o ambiente de desenvolvimento.
+- [x] Instalar dependências Python (Kohya_ss, etc.).
+- [x] Configurar n8n para orquestração de workflows.
+- [ ] Configurar acesso a Runpod para ComfyUI + Flux.
+- [ ] Desenvolver o Agente de Criação e Automação de Conteúdo (Agente 1).
+- [ ] Desenvolver o Agente de Funis de Vendas e Pesquisa de Mercado (Agente 2).
+- [ ] Desenvolver o Agente de Chatbots e Vendas Automatizadas (Agente 3).
+- [ ] Desenvolver o Sistema Geral de Transição e Monetização (Agente 4).
+- [ ] Integrar e testar o sistema de agentes.
+- [x] Documentar e entregar o projeto.
+

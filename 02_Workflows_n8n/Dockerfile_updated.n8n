@@ -1,0 +1,6 @@
+FROM n8nio/n8n
+
+# Opcional: Instalar pacotes adicionais se necessário
+# RUN npm install -g <package_name>
+
+

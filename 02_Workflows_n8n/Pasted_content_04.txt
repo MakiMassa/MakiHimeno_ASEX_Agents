@@ -1,0 +1,20 @@
+“Manu, crie um sistema de agents AI automatizados para meu projeto de personagem digital Maki Himeno, dividido em NSFW rápido (ASEX para monetização imediata, ¥50k-¥100k/mês em 2-3 meses) e SFW escalável (Maki oficial para longo prazo, ¥200k+/mês). Inspire-se em trends de agentic AI 2025, como multi-agent collaboration e hyperautomation em empresas como Microsoft/Google  ￼ ￼ ￼, e projetos reais como GPTGirlfriend/Candy AI para NSFW chatbots monetizando $5k/mês  ￼ ￼ ￼ ￼ ￼, e AI influencers em OnlyFans/Fanvue com agents para funis ganhando $5k-10k/mês . Use platforms low-code como n8n, Zapier, Relevance AI para orquestrar workflows, e frameworks técnicos como AutoGPT/BabyAGI para multi-agent  ￼ ￼ ￼, escalando para um sistema meu com renda passiva e transição de carreira.
+Agent 1: Criação e Automação de Conteúdo
+•  Crie a personagem Maki Himeno com traços: petite, almond-shaped eyes with dark brown iris, oval face with delicate jawline, fair porcelain skin, short black hair with green highlights, round firm buttocks with defined central cleft, slim waist, soft feminine curves, minimal dark pubic hair, elegant vulnerable pose, cyberpunk background.
+•  Automatize: Use ComfyUI + Flux no Runpod para workflows em lote (50 imagens/semana), ControlNet/IP-Adapters para consistência, e scripts Python para treino de LoRA no Kohya_ss (ex: epochs 5, repeats 20, batch size 1).
+•  NSFW: Conteúdo erótico psicológico (semi-nude, censura em genitais para leis japonesas), para packs em Fanvue/Fanbox.
+•  SFW: Poses elegantes para Instagram/TikTok.
+•  Integre DeepSwap para variações e Descript para voz.
+Agent 2: Funis de Vendas e Pesquisa de Mercado
+•  Funil NSFW: Teaser SFW em X/Reddit > link para Fanvue (tiers ¥500 SFW, ¥2000 NSFW) > chatbot vende packs (ex: ¥3.000 personalizado).
+•  Funil SFW: Post no Instagram/TikTok (Maki em outfits cyber) > lead magnet (ebook grátis) > e-mail (Mailchimp) > venda automatizada (produtos via Rakuten affiliates, ¥5.000).
+•  Pesquisa: Agent para analisar tendências japonesas/globais (ex: NSFW em Fanbox, SFW em TikTok), usando Semantic Search para keywords (ex: “cyber lingerie 2025”), e otimizar preços/engajamento.
+•  Automatize com n8n/Zapier: Conecte redes a ManyChat para posts agendados e leads.
+Agent 3: Chatbots e Vendas Automatizadas
+•  Crie chatbots como GPTGirlfriend para roleplay NSFW/SFW, respondendo 24h (multilíngue japonês/inglês), negociando vendas e personalizando conteúdo.
+•  Use ManyChat/Zapier para DMs (ex: “Quer mais de Maki? Assine!”) e vendas inteligentes (ex: preços dinâmicos com min_replies).
+•  Integre Beam AI ou Manus.im para escalar (ex: gerenciar 50+ leads simultâneos, análise de engajamento).
+Agent 4: Sistema Geral de Transição e Monetização
+•  Automatize carreira: Agent para reduzir horas na elétrica (ex: agendamento de orçamentos via Zapier), enquanto escala Maki para ¥200k+/mês (vendas passivas com affiliates).
+•  Métricas: Rastreie ROI (ex: $4k/mês passivos), pesquisa leads e otimização (ex: A/B tests em posts).
+•  Gere plano completo com passos, scripts Python, workflows n8n/Zapier e agents prontos (grátis iniciais, escalando para pagos), para renda passiva e transição em 3-6 meses.”

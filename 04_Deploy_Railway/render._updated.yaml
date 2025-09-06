@@ -1,0 +1,32 @@
+services:
+  - type: web
+    name: maki-himeno-n8n
+    env: docker
+    dockerfilePath: ./Dockerfile.n8n
+    envVars:
+      - key: N8N_BASIC_AUTH_ACTIVE
+        value: true
+      - key: N8N_BASIC_AUTH_USER
+        fromSecret: n8n_user
+      - key: N8N_BASIC_AUTH_PASSWORD
+        fromSecret: n8n_password
+      - key: GENERIC_TIMEZONE
+        value: Europe/Lisbon
+      - key: WEBHOOK_URL
+        fromService:
+          type: web
+          name: maki-himeno-n8n
+          property: url
+
+  - type: worker
+    name: maki-himeno-agent
+    env: python
+    buildCommand: "pip install -r requirements.txt"
+    startCommand: "python maki_agent_system.py"
+    envVars:
+      - key: RUNPOD_API_KEY
+        fromSecret: runpod_api_key
+      - key: OPENAI_API_KEY
+        fromSecret: openai_api_key
+
+
