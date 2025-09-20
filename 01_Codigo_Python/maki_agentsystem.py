@@ -15,6 +15,7 @@ import time
 from datetime import datetime
 from typing import Dict, List, Optional
 import openai
+from flask import Flask
 
 class MakiAgent1_ContentCreation:
     """Agente 1: Criação e Automação de Conteúdo"""
@@ -355,7 +356,7 @@ def main():
     """Função principal"""
     
     # Configuração (usar variáveis de ambiente em produção)
-    RUNPOD_API_KEY = "rpa_2OLBINZ8JN989RC0PS2TSOYAI73XIPIWSYD6A5YT9yb2nc"
+    RUNPOD_API_KEY = os.getenv("RUNPOD_API_KEY", "chave_fake_para_testes")
     
     # Inicializar sistema
     maki_system = MakiAgentSystem(RUNPOD_API_KEY)
@@ -365,9 +366,28 @@ def main():
     
     print("\n" + "=" * 50)
     print("Sistema Maki Himeno - Pronto para produção!")
-    print("Acesse n8n em: https://5678-i29uoovdg1dvh9zlxwl7s-25a64806.manusvm.computer")
     print("=" * 50)
+
+# ==============================================================
+# 🔹 Aqui começa o servidor Flask que mantém o Render ativo
+# ==============================================================
 
 if __name__ == "__main__":
     main()
 
+    app = Flask(__name__)
+
+    @app.route("/")
+    def home():
+        return "Sistema Maki Himeno - Operacional! Acesse /status para métricas."
+
+    @app.route("/status")
+    def status():
+        return {
+            "system_status": "Operacional",
+            "agents_active": 4,
+            "last_run": datetime.now().isoformat()
+        }
+
+    port = int(os.getenv("PORT", 10000))
+    app.run(host="0.0.0.0", port=port, debug=False)
