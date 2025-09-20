@@ -57,7 +57,6 @@ jsonschema==4.24.0
 jsonschema-specifications==2025.4.1
 keras==3.10.0
 libclang==18.1.1
--e git+https://github.com/kohya-ss/sd-scripts.git@3e6935a07edcb944407840ef74fcaf6fcad352f7#egg=library&subdirectory=..\..\sd-scripts
 lightning-utilities==0.14.3
 lion-pytorch==0.0.6
 lycoris_lora==3.2.0.post2
