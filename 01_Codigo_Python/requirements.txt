@@ -109,7 +109,7 @@ ruff==0.12.2
 safehttpx==0.1.6
 safetensors==0.4.4
 schedulefree==1.4
-scipy==1.11.4
+scipy==1.13.1
 semantic-version==2.10.0
 sentencepiece==0.2.0
 sentry-sdk==2.32.0
